@@ -6,6 +6,8 @@ author: tWizT3d_dreaMr
 api-version: 1.19
 depend: [ Shop ]
 softdepend: [ WorldGuard ]
+libraries:
+   - 'com.mysql:mysql-connector-j:8.0.33'
 commands:
    sa:
       description: checks shop signs log

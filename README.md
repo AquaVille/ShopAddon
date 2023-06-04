@@ -1,8 +1,10 @@
 # ShopAddon
 
-Adds item Blacklisting and item Whitelisting, as well as price fixing.
-And adds shop logging lookups
-
-
-
-Brandon from https://www.fiverr.com/brandont80/create-a-small-minecraft-plugin-for-you fixed the sql
+Modified version of ShopAddon by **tWizT3ddreaMr**. 
+### Features
+- Fetches min and max prices from zAuctionHouse API
+### Prerequisites
+Install Shop plugin to the local maven repository with maven-cli. 
+```
+mvn install:install-file -Dfile="Shop-1.8.4.3.jar" -Dpackaging="jar" -Dversion="1.0.0" -DgroupId="com.snowgears.shop" -DartifactId="Shop"
+```

@@ -2,7 +2,7 @@ package me.tWizT3d_dreaMr.ShopAddon.Logging;
 
 import java.util.ArrayList;
 
-import me.tWizT3d_dreaMr.ShopAddon.main;
+import me.tWizT3d_dreaMr.ShopAddon.Plugin;
 
 public class LoggingPlayer {
 private ArrayList<String> al;
@@ -15,7 +15,7 @@ public boolean isName(String pn) {
 	return pname.equals(pn);
 }
 public ArrayList<String> message(int pag){
-	int size=main.getCon().getInt("Logging.PageSize");
+	int size= Plugin.getCon().getInt("Logging.PageSize");
 	ArrayList<String> ret=new ArrayList<String>();
 	for(int i=0; i<size; i++) {
 		if(al.size()>(pag*size)+i){
@@ -31,6 +31,6 @@ public ArrayList<String> message(int pag){
 	return ret;
 }
 public int getPageAmount() {
-	return ((al.size()/main.getCon().getInt("Logging.PageSize")));
+	return ((al.size()/ Plugin.getCon().getInt("Logging.PageSize")));
 }
 }

@@ -20,7 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.tWizT3d_dreaMr.ShopAddon.main;
+import me.tWizT3d_dreaMr.ShopAddon.Plugin;
 import me.tWizT3d_dreaMr.ShopAddon.Logging.LoggingPlayer;
 import me.tWizT3d_dreaMr.ShopAddon.Format;
 import com.snowgears.shop.Shop;
@@ -37,7 +37,7 @@ public class ShopLogging implements Listener {
 public ShopLogging(Shop Shop) throws ClassNotFoundException, SQLException {
 		checkers=new ArrayList<String>();
 		LPS=new ArrayList<LoggingPlayer>();
-    	FileConfiguration shopConfig=main.getShop().getConfig();
+    	FileConfiguration shopConfig= Plugin.getShop().getConfig();
         host = shopConfig.getString("logging.serverName");
         database = shopConfig.getString("logging.databaseName");
         port = shopConfig.getInt("logging.port");
@@ -80,15 +80,15 @@ public ShopLogging(Shop Shop) throws ClassNotFoundException, SQLException {
 		  if(checkers==null) {
 			  checkers=new ArrayList<String>();
 			  checkers.add(p.getUniqueId().toString());
-			  p.sendMessage(Format.format(main.getCon().getString("Command.LoggingOn")));
+			  p.sendMessage(Format.format(Plugin.getCon().getString("Command.LoggingOn")));
 		  }
 		  if(checkers.contains(p.getUniqueId().toString())) {
 			  checkers.remove(p.getUniqueId().toString());
-			  p.sendMessage(Format.format(main.getCon().getString("Command.LoggingOff")));
+			  p.sendMessage(Format.format(Plugin.getCon().getString("Command.LoggingOff")));
 			  return;
 		  }
 		  checkers.add(p.getUniqueId().toString());
-		  p.sendMessage(Format.format(main.getCon().getString("Command.LoggingOn")));
+		  p.sendMessage(Format.format(Plugin.getCon().getString("Command.LoggingOn")));
 	  }
 	  
 	@EventHandler(priority=EventPriority.LOW, ignoreCancelled=true)
@@ -138,7 +138,7 @@ public ShopLogging(Shop Shop) throws ClassNotFoundException, SQLException {
 						DateFormat format = new SimpleDateFormat("dd MMM yy HH:mm:ss"); 
 						Date date = new Date(Long.parseLong(result.getString("Time")));
 						
-						String form=main.getCon().getString("Logging.Format");
+						String form= Plugin.getCon().getString("Logging.Format");
 						
 						form=form.replace("%DATE%", format.format(date));
 						form=form.replace("%UUID%", result.getString("PlayerUUID"));
@@ -180,7 +180,7 @@ public ShopLogging(Shop Shop) throws ClassNotFoundException, SQLException {
 				
 			}
 		};
-		r.runTaskAsynchronously(main.plugin);
+		r.runTaskAsynchronously(Plugin.plugin);
 	}
 	
 	public static ResultSet results(String field, String toLookup){

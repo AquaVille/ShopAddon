@@ -11,7 +11,7 @@ import java.sql.Types;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.tWizT3d_dreaMr.ShopAddon.main;
+import me.tWizT3d_dreaMr.ShopAddon.Plugin;
 
 
 public class ConversionClass {
@@ -60,7 +60,7 @@ public ConversionClass(String host,int port, String database,String username,Str
             @Override
             public void run() {
             	ResultSet results=allResults();
-            	FileConfiguration shopConfig=main.getShop().getConfig();
+            	FileConfiguration shopConfig= Plugin.getShop().getConfig();
                 String sserverName = shopConfig.getString("logging.serverName");
                 String sdatabaseName = shopConfig.getString("logging.databaseName");
                 int sport = shopConfig.getInt("logging.port");
@@ -133,7 +133,7 @@ public ConversionClass(String host,int port, String database,String username,Str
     		}
     	  	 }
     		};
-    		r.runTaskAsynchronously(main.plugin);
+    		r.runTaskAsynchronously(Plugin.plugin);
     }
 	public static ResultSet allResults(){
 	  	ResultSet result=null;
